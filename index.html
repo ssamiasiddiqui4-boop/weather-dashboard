@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyCast | Weather Dashboard — Samia Iftikhar</title>
+  <meta name="description" content="A weather dashboard built with HTML, CSS and JavaScript, using the Open-Meteo API for real-time weather and a 5-day forecast.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-fx" aria-hidden="true">
+    <span class="orb orb-a"></span>
+    <span class="orb orb-b"></span>
+    <span class="orb orb-c"></span>
+    <span class="grain"></span>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a href="https://ssamiasiddiqui4-boop.github.io/portfolio/" class="brand">SkyCast</a>
+      <p class="tagline">A weather dashboard &middot; Auspify internship, Task 4</p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="app-wrap">
+      <div class="wrap">
+
+        <form id="search-form" class="search-row glass" novalidate>
+          <label class="visually-hidden" for="city-input">City name</label>
+          <input
+            type="text"
+            id="city-input"
+            placeholder="Search a city, e.g. Karachi"
+            autocomplete="off"
+          >
+          <button type="submit" class="btn btn-primary">Search</button>
+          <button type="button" class="btn btn-ghost" id="locate-btn">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2v3m0 14v3M2 12h3m14 0h3M12 7a5 5 0 100 10 5 5 0 000-10z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span>My location</span>
+          </button>
+        </form>
+        <p class="error" id="search-error" aria-live="polite"></p>
+
+        <div id="status" class="status" aria-live="polite" hidden></div>
+
+        <div id="result" hidden>
+
+          <div class="current glass shine">
+            <div class="current-main">
+              <p class="place" id="place-name">—</p>
+              <p class="updated" id="updated-at"></p>
+              <div class="temp-row">
+                <span class="icon" id="current-icon" aria-hidden="true"></span>
+                <span class="temp" id="current-temp">—°</span>
+              </div>
+              <p class="desc" id="current-desc">—</p>
+            </div>
+            <ul class="current-stats">
+              <li><span>Feels like</span><strong id="feels-like">—°</strong></li>
+              <li><span>Humidity</span><strong id="humidity">—%</strong></li>
+              <li><span>Wind</span><strong id="wind">— km/h</strong></li>
+              <li><span>Today's range</span><strong id="today-range">—° / —°</strong></li>
+            </ul>
+          </div>
+
+          <h2 class="forecast-title">5-day forecast</h2>
+          <ul class="forecast" id="forecast"></ul>
+
+        </div>
+
+        <div id="empty-state" class="empty-card glass">
+          <p>Search for a city, or use your current location, to see live weather.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-bar">
+      <p>&copy; <span id="year">2026</span> Samia Iftikhar. Weather data from <a class="text-link" href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.</p>
+      <a class="text-link" href="https://ssamiasiddiqui4-boop.github.io/portfolio/" target="_blank" rel="noopener">Back to portfolio</a>
+    </div>
+  </footer>
+
+  <template id="forecast-item-template">
+    <li class="forecast-item glass shine">
+      <p class="f-day"></p>
+      <span class="f-icon" aria-hidden="true"></span>
+      <p class="f-desc"></p>
+      <p class="f-range"><strong class="f-max"></strong> / <span class="f-min"></span></p>
+    </li>
+  </template>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
